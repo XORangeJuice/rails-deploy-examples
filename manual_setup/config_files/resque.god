@@ -14,6 +14,7 @@ num_workers.times do |num|
     w.interval = 30.seconds
     w.env      = {"QUEUE"=> queue, "RAILS_ENV"=>rails_env}
     w.start    = "/home/deploy/.rvm/bin/deploy_bundle exec rake -f #{rails_root}/Rakefile environment resque:work"
+    w.log      = "/home/deploy/sample-app-auto/shared/log/resque-#{rails_env}.log"
 
     w.uid = 'deploy'
     w.gid = 'deploy'
